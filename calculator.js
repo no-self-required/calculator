@@ -43,7 +43,7 @@ operationContainer.addEventListener("input", () => {
   appState.operationValue = checkedOperations;
 });
 
-//Helper functions
+//Helper functions below
 const sendCalculation = () => {
   const query = createQuery();
   makeRequest(query);
