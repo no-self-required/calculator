@@ -5,6 +5,7 @@ const appState = {
   rightOperand: "0",
 };
 
+//Set variables to target element
 const leftOperand = document.getElementById("left-operand");
 const rightOperand = document.getElementById("right-operand");
 const calculateButton = document.getElementById("calculate-button");
@@ -14,9 +15,7 @@ const [operationContainer] = document.getElementsByClassName(
 );
 
 leftOperand.addEventListener("input", (e) => {
-  const stringValue = e.target.value;
-  console.log("stringV", stringValue);
-  appState.leftOperand = stringValue;
+  appState.leftOperand = e.target.value;
 });
 
 rightOperand.addEventListener("input", (e) => {
@@ -44,13 +43,14 @@ operationContainer.addEventListener("input", () => {
   appState.operationValue = checkedOperations;
 });
 
+//Helper functions
 const sendCalculation = () => {
   const query = createQuery();
   makeRequest(query);
 };
 
-
 const checkOperands = () => {
+  //Cannot calculate division or remainder with 0 as denominator 
   if (
     (appState.rightOperand === "0") &&
     appState.operationValue === "/"
